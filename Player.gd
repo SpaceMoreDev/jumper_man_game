@@ -11,6 +11,7 @@ const JUMP_VELOCITY = -400.0
 
 var inputDirection : Vector2 = Vector2.ZERO
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
+
 var b_checkFeet : bool = false
 var b_jumped : bool = false
 var b_touching : bool = false
@@ -36,7 +37,7 @@ func _input(event):
 			angle = dirangle
 			if inputDirection.y < -150:
 				Jump()
-			elif inputDirection.y > 150:
+			elif inputDirection.y > 100:
 				Fall()
 			
 			inputDirection.x = clamp(inputDirection.x, -100, 100)
@@ -45,7 +46,7 @@ func _input(event):
 		else:
 			b_touching = false
 			inputDirection = Vector2.ZERO
-	
+
 
 func _ready():
 	Arrow = impactSprite.get_child(0)
