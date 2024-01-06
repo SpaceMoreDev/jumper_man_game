@@ -1,9 +1,13 @@
 extends CharacterBody2D
+class_name Player 
 
+@export var GameManager : Manager 
 @export var hideStickOnRelease : bool = true
 
 @export var node_feetCheck : Area2D
+@export var node_feetPaticles : CPUParticles2D
 @export var deadZone : float = 40
+@export var areaBody : Area2D
 @export var impactSprite : Sprite2D
 
 const SPEED = 100.0
@@ -49,9 +53,11 @@ func _input(event):
 
 
 func _ready():
+	GameManager.player = self
 	Arrow = impactSprite.get_child(0)
 	node_feetCheck.connect("body_entered", checkFeet_enter)
 	node_feetCheck.connect("body_exited", checkFeet_exit)
+	areaBody.connect("body_entered", checkArea)
 
 func Jump():
 	if !b_jumped and is_on_floor():
@@ -63,6 +69,11 @@ func Fall():
 		$CollisionShape2D.disabled = true
 		await get_tree().create_timer(0.1).timeout
 		$CollisionShape2D.disabled = false
+
+func checkArea(body):
+	print("collect")
+	if body is Coin:
+		(body as Coin).collect(GameManager)
 
 func checkFeet_enter(body:Node2D):
 	if body.is_in_group("Platform"):
@@ -99,7 +110,11 @@ func _physics_process(delta):
 
 	if inputDirection.length() > deadZone:
 		velocity.x = inputDirection.x * delta * SPEED
+		if is_on_floor():
+			node_feetPaticles.emitting = true
 	else:
 		velocity.x = move_toward(velocity.x, 0, SPEED)
+		if velocity.x == 0:
+			node_feetPaticles.emitting = false
 
 	move_and_slide()

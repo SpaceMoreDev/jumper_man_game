@@ -15,6 +15,8 @@ func _physics_process(delta):
 		print("Distance: %s"%[follow.position.y - position.y])
 		get_tree().reload_current_scene()
 		
+	position.x = follow.position.x
+	
 	if  follow.position.y < position.y:
 		position.y = follow.position.y
 	else:
