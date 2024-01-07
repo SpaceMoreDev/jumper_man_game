@@ -11,8 +11,7 @@ func _ready():
 
 func _physics_process(delta):
 	var distance : float = follow.position.y - position.y
-	if distance > 200:
-		print("Distance: %s"%[follow.position.y - position.y])
+	if distance > 170:
 		get_tree().reload_current_scene()
 		
 	position.x = follow.position.x
