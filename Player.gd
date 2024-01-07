@@ -5,9 +5,10 @@ class_name Player
 @export var node_feetPaticles : CPUParticles2D
 @export var areaBody : Area2D
 
-const SPEED = 400.0
+const SPEED = 100.0
 const JUMP_VELOCITY = -400.0
 const JUMP_BOOST = -200
+const VELOCITY_BOOST_LIMIT = 250.0
 
 var boost : float = 0
 var input : Vector2 = Vector2.ZERO
@@ -25,7 +26,7 @@ func _ready():
 func Jump():
 	node_feetPaticles.emitting = false
 	if !b_jumped and is_on_floor():
-		if velocity.length() > 300.0:
+		if velocity.length() > VELOCITY_BOOST_LIMIT:
 			print("speed: %s"%velocity.length())
 			boost += JUMP_BOOST
 		else :
@@ -57,10 +58,9 @@ func _process(delta):
 	elif Input.is_action_just_pressed("DOWN"):
 		Fall()
 	
-	input.x = Input.get_axis("LEFT","RIGHT") 
+	#input.x = Input.get_axis("LEFT","RIGHT") 
 
 func _physics_process(delta):
-	
 	# Add the gravity.
 	if not is_on_floor():
 		velocity.y += gravity * delta
@@ -68,15 +68,13 @@ func _physics_process(delta):
 		b_jumped = false
 
 	if input.length() > 0.0:
-		velocity.x += input.x * delta * SPEED
+		velocity.x = lerp(velocity.x,velocity.x + input.x * SPEED, delta * 5)
 		if is_on_floor():
 			if abs(velocity.x) > 10.0:
 				node_feetPaticles.emitting = true
 			else:
 				node_feetPaticles.emitting = false
 	else:
-		velocity.x = move_toward(velocity.x, 0.0, SPEED)
-		if velocity.x == 0.0:
-			node_feetPaticles.emitting = false
-
+		velocity.x = lerp(velocity.x, 0.0, delta* 5)
+		node_feetPaticles.emitting = false
 	move_and_slide()

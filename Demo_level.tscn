@@ -1,4 +1,4 @@
-[gd_scene load_steps=35 format=3 uid="uid://tnq1wjnhg1bs"]
+[gd_scene load_steps=39 format=3 uid="uid://tnq1wjnhg1bs"]
 
 [ext_resource type="Texture2D" uid="uid://dc0ncbw3115xv" path="res://Assets/tilemap.png" id="1_aiqlh"]
 [ext_resource type="Script" path="res://Player.gd" id="1_hk23r"]
@@ -6,7 +6,9 @@
 [ext_resource type="Texture2D" uid="uid://htkhodsnf700" path="res://icon.svg" id="1_rd78h"]
 [ext_resource type="Script" path="res://GameManager.gd" id="1_rgpv6"]
 [ext_resource type="Script" path="res://GameCamera.gd" id="2_g2bkm"]
+[ext_resource type="Texture2D" uid="uid://1mdvq1ba3wlx" path="res://Assets/clock.png" id="3_lqips"]
 [ext_resource type="Texture2D" uid="uid://c31c276m36heo" path="res://Assets/center.png" id="3_rnqiq"]
+[ext_resource type="Texture2D" uid="uid://bwyssqdfkwkmg" path="res://Assets/clockArrow.png" id="4_28lxi"]
 [ext_resource type="Texture2D" uid="uid://djuq81nviiqns" path="res://Assets/arrow.png" id="4_jmdiv"]
 [ext_resource type="Script" path="res://SwipeControls.gd" id="5_yaon4"]
 
@@ -21,6 +23,12 @@ point_count = 3
 [sub_resource type="Gradient" id="Gradient_5m4ou"]
 offsets = PackedFloat32Array(0, 0.179487, 0.410256, 0.730769, 0.91453)
 colors = PackedColorArray(0.870588, 0, 0, 0, 0.870588, 0, 0, 1, 0.886275, 1, 0.301961, 1, 0, 1, 0, 1, 0, 1, 0, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ksil0"]
+bg_color = Color(0, 0, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_dyy3a"]
+bg_color = Color(1, 0.294118, 0, 1)
 
 [sub_resource type="TileMapPattern" id="TileMapPattern_nbgja"]
 tile_data = PackedInt32Array(65536, 1, 0, 1, 393217, 3, 65537, 65537, 0, 65538, 65537, 0, 65539, 65537, 0, 4, 327681, 3, 65540, 65537, 0, 65541, 131073, 0)
@@ -316,27 +324,90 @@ height = 28.0
 
 [node name="Node2D" type="Node2D"]
 
-[node name="Manager" type="Node" parent="." node_paths=PackedStringArray("UI_ScoreParticle", "UI_Score") groups=["Game Manager"]]
+[node name="Manager" type="Node" parent="." node_paths=PackedStringArray("UI_ScoreParticle", "UI_Score", "clockArrow", "gameCamera", "xpBar") groups=["Game Manager"]]
 script = ExtResource("1_rgpv6")
-UI_ScoreParticle = NodePath("UI/Control/ScoreText/Control/Stars")
-UI_Score = NodePath("UI/Control/ScoreText")
+UI_ScoreParticle = NodePath("UI/Control/HBoxContainer/Left/ScoreText/Control/Stars")
+UI_Score = NodePath("UI/Control/HBoxContainer/Left/ScoreText")
+clockArrow = NodePath("UI/Control/HBoxContainer2/Right/Control/TextureRect/TextureRect2")
+gameCamera = NodePath("../Camera2D")
+xpBar = NodePath("UI/Control/HBoxContainer/Left/ProgressBar")
 
 [node name="UI" type="CanvasLayer" parent="Manager"]
 
 [node name="Control" type="Control" parent="Manager/UI"]
+texture_filter = 1
 layout_mode = 3
-anchors_preset = 0
-offset_left = 23.0
-offset_right = 63.0
-offset_bottom = 40.0
+anchors_preset = 10
+anchor_right = 1.0
+grow_horizontal = 2
 
-[node name="ScoreText" type="RichTextLabel" parent="Manager/UI/Control"]
-clip_contents = false
+[node name="HBoxContainer2" type="HBoxContainer" parent="Manager/UI/Control"]
+layout_direction = 2
 layout_mode = 1
-offset_left = 2.0
-offset_top = 18.0
-offset_right = 19.0
-offset_bottom = 41.0
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -128.0
+offset_bottom = 135.0
+grow_horizontal = 0
+alignment = 2
+
+[node name="Right" type="VBoxContainer" parent="Manager/UI/Control/HBoxContainer2"]
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 0
+alignment = 2
+
+[node name="Control" type="Control" parent="Manager/UI/Control/HBoxContainer2/Right"]
+layout_direction = 3
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 2
+
+[node name="TextureRect" type="TextureRect" parent="Manager/UI/Control/HBoxContainer2/Right/Control"]
+layout_mode = 1
+offset_right = 48.0
+offset_bottom = 48.0
+scale = Vector2(2, 2)
+pivot_offset = Vector2(48, 0)
+size_flags_vertical = 3
+texture = ExtResource("3_lqips")
+
+[node name="TextureRect2" type="TextureRect" parent="Manager/UI/Control/HBoxContainer2/Right/Control/TextureRect"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -24.0
+offset_top = -24.0
+offset_right = 24.0
+offset_bottom = 24.0
+grow_horizontal = 2
+grow_vertical = 2
+rotation = -1.5708
+pivot_offset = Vector2(24, 24)
+size_flags_vertical = 3
+texture = ExtResource("4_28lxi")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Manager/UI/Control"]
+layout_direction = 2
+layout_mode = 1
+offset_left = 11.0
+offset_right = 160.0
+offset_bottom = 310.0
+alignment = 2
+
+[node name="Left" type="VBoxContainer" parent="Manager/UI/Control/HBoxContainer"]
+layout_direction = 2
+layout_mode = 2
+size_flags_horizontal = 2
+
+[node name="ScoreText" type="RichTextLabel" parent="Manager/UI/Control/HBoxContainer/Left"]
+z_index = 5
+clip_contents = false
+layout_mode = 2
 size_flags_horizontal = 3
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 10
@@ -347,7 +418,7 @@ fit_content = true
 scroll_active = false
 autowrap_mode = 0
 
-[node name="Control" type="Control" parent="Manager/UI/Control/ScoreText"]
+[node name="Control" type="Control" parent="Manager/UI/Control/HBoxContainer/Left/ScoreText"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -357,7 +428,7 @@ anchor_bottom = 0.5
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Stars" type="CPUParticles2D" parent="Manager/UI/Control/ScoreText/Control"]
+[node name="Stars" type="CPUParticles2D" parent="Manager/UI/Control/HBoxContainer/Left/ScoreText/Control"]
 texture_filter = 1
 emitting = false
 lifetime = 2.0
@@ -375,13 +446,31 @@ scale_amount_max = 2.0
 scale_amount_curve = SubResource("Curve_6lce7")
 color_ramp = SubResource("Gradient_5m4ou")
 
-[node name="VBoxContainer" type="VBoxContainer" parent="Manager/UI/Control"]
-layout_mode = 0
-offset_right = 40.0
-offset_bottom = 40.0
-
-[node name="HBoxContainer" type="HBoxContainer" parent="Manager/UI/Control/VBoxContainer"]
+[node name="ProgressBar" type="ProgressBar" parent="Manager/UI/Control/HBoxContainer/Left"]
+self_modulate = Color(1, 0.227451, 0, 1)
+custom_minimum_size = Vector2(28.9, 133.48)
 layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 1
+theme_override_styles/background = SubResource("StyleBoxFlat_ksil0")
+theme_override_styles/fill = SubResource("StyleBoxFlat_dyy3a")
+fill_mode = 3
+show_percentage = false
+
+[node name="Label" type="Label" parent="Manager/UI/Control/HBoxContainer/Left/ProgressBar"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -20.0
+offset_top = 3.0
+offset_right = 20.0
+offset_bottom = 26.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_colors/font_color = Color(1, 0, 0, 1)
 
 [node name="Map" type="Node" parent="."]
 
@@ -422,7 +511,6 @@ metadata/_edit_group_ = true
 
 [node name="Swipe" type="Node" parent="JumperMan/Controls" node_paths=PackedStringArray("impactSprite")]
 script = ExtResource("5_yaon4")
-swipeIsActive = false
 impactSprite = NodePath("Swipe_UI/Center")
 
 [node name="Swipe_UI" type="CanvasLayer" parent="JumperMan/Controls/Swipe"]
@@ -536,6 +624,12 @@ position = Vector2(99, -208)
 
 [node name="Coin2" parent="Coins" instance=ExtResource("1_qyejy")]
 position = Vector2(79, 34)
+
+[node name="Coin30" parent="Coins" instance=ExtResource("1_qyejy")]
+position = Vector2(118, 163)
+
+[node name="Coin31" parent="Coins" instance=ExtResource("1_qyejy")]
+position = Vector2(191, 164)
 
 [node name="Coin9" parent="Coins" instance=ExtResource("1_qyejy")]
 position = Vector2(58, -305)

@@ -16,7 +16,7 @@ var Score : int = 0:
 			GameManager.emit_signal("newScore",1.5, 1)
 		elif Score >= 200:
 			GameManager.UI_ScoreParticle.emitting = true
-			newVal = "[color=#FF0000]%s[/color]"%Score
+			newVal = "[rainbow freq=1.0 sat=0.8 val=0.8]%s[/rainbow]"%Score
 			GameManager.emit_signal("newScore",1.8, 2)
 		GameManager.UI_Score.text = newVal
 

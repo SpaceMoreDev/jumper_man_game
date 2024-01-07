@@ -1,12 +1,16 @@
-extends RigidBody2D
+extends Node2D
 class_name Coin
 
 var collected : bool = false
 
 func collect():
-	Global.Score += 10
+	if Global.GameManager.xpValue >= 1:
+		Global.Score += 10 * Global.GameManager.xpValue
+	else:
+		Global.Score += 10
 	#print(Global.Score)
 	collected = true
+	Global.GameManager.xpValue +=1
 
 func _physics_process(delta):
 	if collected:
