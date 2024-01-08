@@ -63,7 +63,7 @@ func _scoreEffect(size : float, smoothing: float):
 func clockTime(delta):
 	if clockArrow.rotation_degrees > 270:
 		clockArrow.rotation = deg_to_rad(-90)
-		gameCamera.cameraSpeed *= 2
+		gameCamera.cameraSpeed *= 1.2
 		clockArrow.get_parent().scale = clockOriginal_scale
 		reverse_clock = false
 		b_animate_clock = true

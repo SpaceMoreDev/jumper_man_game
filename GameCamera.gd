@@ -2,7 +2,12 @@ extends Camera2D
 
 class_name GameCamera
 
-@export var cameraSpeed : float = 5
+@export var cameraSpeed : float = 5:
+	set(val):
+		if cameraSpeed < 20:
+			cameraSpeed = val
+			print("new cam speed is: %s"%cameraSpeed)
+			
 @export var startScrollingHeight : float = -40
 @export var follow : Node2D
 var manager:Manager
