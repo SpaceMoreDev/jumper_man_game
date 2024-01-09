@@ -19,3 +19,7 @@ func _physics_process(delta):
 		else:
 			position = lerp(position, Global.GameManager.player.position, delta * 10)
 			scale = lerp(scale, Vector2.ZERO, delta * 5)
+	else:
+		if (position.y - Global.GameManager.gameCamera.position.y ) > 170:
+			#print("deleting")
+			queue_free() 
