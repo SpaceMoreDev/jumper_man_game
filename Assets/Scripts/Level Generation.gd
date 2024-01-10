@@ -12,22 +12,25 @@ var player : Player
 var manager : Manager
 var camera : Vector2
 var spawnHeight : float = 100
+
 var lastPlatformPosition : Vector2 = Vector2(109,110) #last spawned platform
 var lastWallPosition : Vector2i = Vector2i(-3,-60) #last spawned platform
 var lastPatternIndex : float = -1 #last spawned platform
+
 var threadData : Array
 
 func _ready():
 	manager = Global.GameManager
 	player = manager.player
 	camera = manager.gameCamera.position
+	
 	threadData.append(camera) # 0
 	threadData.append(spawnHeight) # 1
 	threadData.append(lastWallPosition) # 2
 	threadData.append(lastPlatformPosition) # 3
 	threadData.append(lastPatternIndex) # 4
 	
-	generationThread.start(Generate)
+	call_deferred("Generate")
 
 func EraseTilemap(tilemap : TileMap, layer : int = 0):
 	for i in tilemap.get_used_cells(layer):
@@ -74,7 +77,7 @@ func Generate():
 		threadData[3] = pos
 		call_deferred("SpawnCoins",vectorToNextPlatform, PlatformPosition)
 
-	threadData[1] /= 100
+	threadData[1] /= 10
 	print("Generated!")
 
 func SpawnCoins(vectorDir : Vector2, SpawnPosition : Vector2):
@@ -131,6 +134,5 @@ func Spawn(position) -> Vector2:
 
 func _physics_process(delta):
 	if player.position.y < threadData[1]:
-		generationThread.wait_to_finish()
-		generationThread.start(Generate)
+		call_deferred("Generate")
 

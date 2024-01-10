@@ -1,4 +1,4 @@
-[gd_scene load_steps=31 format=3 uid="uid://tnq1wjnhg1bs"]
+[gd_scene load_steps=32 format=3 uid="uid://tnq1wjnhg1bs"]
 
 [ext_resource type="Texture2D" uid="uid://dc0ncbw3115xv" path="res://Assets/tilemap.png" id="1_aiqlh"]
 [ext_resource type="Script" path="res://Player.gd" id="1_hk23r"]
@@ -254,6 +254,9 @@ tile_data = PackedInt32Array(65536, 0, 0, 1, 327680, 5, 65537, 65536, 0, 65538, 
 [sub_resource type="TileMapPattern" id="TileMapPattern_2oulx"]
 tile_data = PackedInt32Array(65536, 0, 0, 1, 393216, 4, 65537, 65536, 0, 65538, 65536, 0, 65539, 65536, 0, 65540, 65536, 0, 5, 393216, 3, 65541, 65536, 0, 65542, 65536, 0, 65543, 65536, 0, 8, 327680, 5, 65544, 65536, 0, 65545, 131072, 0)
 
+[sub_resource type="TileMapPattern" id="TileMapPattern_7qcus"]
+tile_data = PackedInt32Array(0, 393216, 4, 65536, 0, 0, 1, 327680, 5, 65537, 65536, 0, 65538, 65536, 0, 3, 393216, 5, 65539, 65536, 0, 65540, 131072, 0)
+
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_xtspd"]
 texture = ExtResource("1_aiqlh")
 0:0/0 = 0
@@ -465,6 +468,7 @@ sources/0 = SubResource("TileSetAtlasSource_xtspd")
 pattern_0 = SubResource("TileMapPattern_a4o2j")
 pattern_1 = SubResource("TileMapPattern_jvqjf")
 pattern_2 = SubResource("TileMapPattern_2oulx")
+pattern_3 = SubResource("TileMapPattern_7qcus")
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ni1ef"]
 atlas = ExtResource("1_aiqlh")
