@@ -30,7 +30,7 @@ func _ready():
 	threadData.append(lastPlatformPosition) # 3
 	threadData.append(lastPatternIndex) # 4
 	
-	call_deferred("Generate")
+	generationThread.start(Generate)
 
 func EraseTilemap(tilemap : TileMap, layer : int = 0):
 	for i in tilemap.get_used_cells(layer):
@@ -47,7 +47,6 @@ func GenerateWall():
 	threadData[2].y -= wallPattern.get_size().y
 	
 
-var wallThread : Thread = Thread.new()
 
 func Generate():
 
@@ -118,6 +117,7 @@ func Spawn(position) -> Vector2:
 	
 	var lastcell = Vector2i.ZERO
 	var count = pattern.get_used_cells().size()-1
+	
 	#var patternData = pattern.get("tile_data")
 	#print(patternData)
 	#platformTiles.set("tile_data", patternData)
@@ -134,5 +134,6 @@ func Spawn(position) -> Vector2:
 
 func _physics_process(delta):
 	if player.position.y < threadData[1]:
-		call_deferred("Generate")
+		generationThread.wait_to_finish()
+		generationThread.start(Generate)
 

@@ -4,7 +4,7 @@ class_name GameCamera
 
 @export var cameraSpeed : float = 5:
 	set(val):
-		if cameraSpeed < 20:
+		if cameraSpeed < 30:
 			cameraSpeed = val
 			print("new cam speed is: %s"%cameraSpeed)
 			
@@ -28,6 +28,7 @@ func _physics_process(delta):
 		position.y = follow.position.y
 	else:
 		if position.y < startScrollingHeight :
+			offset.y = lerp(offset.y,-100.0, delta*5)
 			if not manager.started:
 				manager.started = true
 			position.y = lerp(position.y, position.y - cameraSpeed, delta * 5)
