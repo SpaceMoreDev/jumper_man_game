@@ -1,19 +1,19 @@
 [gd_scene load_steps=32 format=3 uid="uid://tnq1wjnhg1bs"]
 
-[ext_resource type="Texture2D" uid="uid://dc0ncbw3115xv" path="res://Assets/tilemap.png" id="1_aiqlh"]
-[ext_resource type="Script" path="res://Player.gd" id="1_hk23r"]
-[ext_resource type="Texture2D" uid="uid://htkhodsnf700" path="res://icon.svg" id="1_rd78h"]
-[ext_resource type="Script" path="res://GameManager.gd" id="1_rgpv6"]
-[ext_resource type="Script" path="res://GameCamera.gd" id="2_g2bkm"]
-[ext_resource type="Texture2D" uid="uid://1mdvq1ba3wlx" path="res://Assets/clock.png" id="3_lqips"]
-[ext_resource type="Texture2D" uid="uid://c31c276m36heo" path="res://Assets/center.png" id="3_rnqiq"]
-[ext_resource type="Texture2D" uid="uid://bwyssqdfkwkmg" path="res://Assets/clockArrow.png" id="4_28lxi"]
-[ext_resource type="Texture2D" uid="uid://djuq81nviiqns" path="res://Assets/arrow.png" id="4_jmdiv"]
-[ext_resource type="Script" path="res://Assets/Scripts/Level Generation.gd" id="5_uae3k"]
-[ext_resource type="Script" path="res://SwipeControls.gd" id="5_yaon4"]
+[ext_resource type="Script" path="res://Scripts/GameManager.gd" id="1_jxnen"]
+[ext_resource type="Texture2D" uid="uid://1mdvq1ba3wlx" path="res://Assets/2D/clock.png" id="2_oqgho"]
+[ext_resource type="Texture2D" uid="uid://bwyssqdfkwkmg" path="res://Assets/2D/clockArrow.png" id="3_vrfab"]
+[ext_resource type="Texture2D" uid="uid://dc0ncbw3115xv" path="res://Assets/2D/tilemap.png" id="4_f6de0"]
+[ext_resource type="Script" path="res://Scripts/Level Generation.gd" id="5_aqa5n"]
+[ext_resource type="Script" path="res://Scripts/GameCamera.gd" id="6_reied"]
+[ext_resource type="Script" path="res://Scripts/Player.gd" id="7_0ly1x"]
+[ext_resource type="Script" path="res://Scripts/SwipeControls.gd" id="8_d2oxu"]
+[ext_resource type="Texture2D" uid="uid://c31c276m36heo" path="res://Assets/2D/center.png" id="9_e0ods"]
+[ext_resource type="Texture2D" uid="uid://djuq81nviiqns" path="res://Assets/2D/arrow.png" id="10_yuchp"]
+[ext_resource type="Texture2D" uid="uid://htkhodsnf700" path="res://Assets/icon.svg" id="11_vt6gr"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_yhdnt"]
-atlas = ExtResource("1_aiqlh")
+atlas = ExtResource("4_f6de0")
 region = Rect2(48, 96, 16, 16)
 
 [sub_resource type="Curve" id="Curve_6lce7"]
@@ -34,7 +34,7 @@ bg_color = Color(1, 0.294118, 0, 1)
 tile_data = PackedInt32Array(0, 0, 4, 65536, 0, 4, 131072, 0, 4, 196608, 0, 4, 262144, 0, 4, 327680, 0, 4, 393216, 0, 4, 458752, 0, 4, 524288, 0, 4, 589824, 0, 4, 655360, 0, 4, 720896, 0, 4, 786432, 0, 4, 851968, 0, 4, 917504, 0, 4, 983040, 0, 4, 1048576, 0, 4, 1114112, 0, 4, 1179648, 0, 4, 1245184, 0, 4, 1310720, 0, 4, 1376256, 0, 4, 1441792, 0, 4, 1507328, 0, 4, 1572864, 0, 4, 1638400, 0, 4, 1703936, 0, 4, 1769472, 0, 4, 1835008, 0, 4, 1900544, 0, 4, 1966080, 0, 4, 2031616, 0, 4, 2097152, 0, 4, 2162688, 0, 4, 2228224, 0, 4, 2293760, 0, 4, 2359296, 0, 4, 2424832, 0, 4, 2490368, 0, 4, 2555904, 0, 4, 2621440, 0, 4, 2686976, 0, 4, 2752512, 0, 4, 2818048, 0, 4, 2883584, 0, 4, 2949120, 0, 4, 3014656, 0, 4, 3080192, 0, 4, 3145728, 0, 4, 3211264, 0, 4, 3276800, 0, 4, 3342336, 0, 4, 3407872, 0, 4, 3473408, 0, 4, 3538944, 0, 4, 3604480, 0, 4, 3670016, 0, 4, 3735552, 0, 4, 3801088, 0, 4, 3866624, 0, 4, 3932160, 0, 4, 3997696, 0, 4, 4063232, 0, 4, 4128768, 0, 4, 4194304, 0, 4, 4259840, 0, 4, 4325376, 0, 4, 4390912, 0, 4, 4456448, 0, 4, 4521984, 0, 4, 1, 0, 4, 65537, 0, 4, 131073, 0, 4, 196609, 0, 4, 262145, 0, 4, 327681, 0, 4, 393217, 0, 4, 458753, 0, 4, 524289, 0, 4, 589825, 0, 4, 655361, 0, 4, 720897, 0, 4, 786433, 0, 4, 851969, 0, 4, 917505, 0, 4, 983041, 0, 4, 1048577, 0, 4, 1114113, 0, 4, 1179649, 0, 4, 1245185, 0, 4, 1310721, 0, 4, 1376257, 0, 4, 1441793, 0, 4, 1507329, 0, 4, 1572865, 0, 4, 1638401, 0, 4, 1703937, 0, 4, 1769473, 0, 4, 1835009, 0, 4, 1900545, 0, 4, 1966081, 0, 4, 2031617, 0, 4, 2097153, 0, 4, 2162689, 0, 4, 2228225, 0, 4, 2293761, 0, 4, 2359297, 0, 4, 2424833, 0, 4, 2490369, 0, 4, 2555905, 0, 4, 2621441, 0, 4, 2686977, 0, 4, 2752513, 0, 4, 2818049, 0, 4, 2883585, 0, 4, 2949121, 0, 4, 3014657, 0, 4, 3080193, 0, 4, 3145729, 0, 4, 3211265, 0, 4, 3276801, 0, 4, 3342337, 0, 4, 3407873, 0, 4, 3473409, 0, 4, 3538945, 0, 4, 3604481, 0, 4, 3670017, 0, 4, 3735553, 0, 4, 3801089, 0, 4, 3866625, 0, 4, 3932161, 0, 4, 3997697, 0, 4, 4063233, 0, 4, 4128769, 0, 4, 4194305, 0, 4, 4259841, 0, 4, 4325377, 0, 4, 4390913, 0, 4, 4456449, 0, 4, 4521985, 0, 4, 2, 0, 4, 65538, 0, 4, 131074, 0, 4, 196610, 0, 4, 262146, 0, 4, 327682, 0, 4, 393218, 0, 4, 458754, 0, 4, 524290, 0, 4, 589826, 0, 4, 655362, 0, 4, 720898, 0, 4, 786434, 0, 4, 851970, 0, 4, 917506, 0, 4, 983042, 0, 4, 1048578, 0, 4, 1114114, 0, 4, 1179650, 0, 4, 1245186, 0, 4, 1310722, 0, 4, 1376258, 0, 4, 1441794, 0, 4, 1507330, 0, 4, 1572866, 0, 4, 1638402, 0, 4, 1703938, 0, 4, 1769474, 0, 4, 1835010, 0, 4, 1900546, 0, 4, 1966082, 0, 4, 2031618, 0, 4, 2097154, 0, 4, 2162690, 0, 4, 2228226, 0, 4, 2293762, 0, 4, 2359298, 0, 4, 2424834, 0, 4, 2490370, 0, 4, 2555906, 0, 4, 2621442, 0, 4, 2686978, 0, 4, 2752514, 0, 4, 2818050, 0, 4, 2883586, 0, 4, 2949122, 0, 4, 3014658, 0, 4, 3080194, 0, 4, 3145730, 0, 4, 3211266, 0, 4, 3276802, 0, 4, 3342338, 0, 4, 3407874, 0, 4, 3473410, 0, 4, 3538946, 0, 4, 3604482, 0, 4, 3670018, 0, 4, 3735554, 0, 4, 3801090, 0, 4, 3866626, 0, 4, 3932162, 0, 4, 3997698, 0, 4, 4063234, 0, 4, 4128770, 0, 4, 4194306, 0, 4, 4259842, 0, 4, 4325378, 0, 4, 4390914, 0, 4, 4456450, 0, 4, 4521986, 0, 4, 16, 0, 4, 65552, 0, 4, 131088, 0, 4, 196624, 0, 4, 262160, 0, 4, 327696, 0, 4, 393232, 0, 4, 458768, 0, 4, 524304, 0, 4, 589840, 0, 4, 655376, 0, 4, 720912, 0, 4, 786448, 0, 4, 851984, 0, 4, 917520, 0, 4, 983056, 0, 4, 1048592, 0, 4, 1114128, 0, 4, 1179664, 0, 4, 1245200, 0, 4, 1310736, 0, 4, 1376272, 0, 4, 1441808, 0, 4, 1507344, 0, 4, 1572880, 0, 4, 1638416, 0, 4, 1703952, 0, 4, 1769488, 0, 4, 1835024, 0, 4, 1900560, 0, 4, 1966096, 0, 4, 2031632, 0, 4, 2097168, 0, 4, 2162704, 0, 4, 2228240, 0, 4, 2293776, 0, 4, 2359312, 0, 4, 2424848, 0, 4, 2490384, 0, 4, 2555920, 0, 4, 2621456, 0, 4, 2686992, 0, 4, 2752528, 0, 4, 2818064, 0, 4, 2883600, 0, 4, 2949136, 0, 4, 3014672, 0, 4, 3080208, 0, 4, 3145744, 0, 4, 3211280, 0, 4, 3276816, 0, 4, 3342352, 0, 4, 3407888, 0, 4, 3473424, 0, 4, 3538960, 0, 4, 3604496, 0, 4, 3670032, 0, 4, 3735568, 0, 4, 3801104, 0, 4, 3866640, 0, 4, 3932176, 0, 4, 3997712, 0, 4, 4063248, 0, 4, 4128784, 0, 4, 4194320, 0, 4, 4259856, 0, 4, 4325392, 0, 4, 4390928, 0, 4, 4456464, 0, 4, 4522000, 0, 4, 17, 0, 4, 65553, 0, 4, 131089, 0, 4, 196625, 0, 4, 262161, 0, 4, 327697, 0, 4, 393233, 0, 4, 458769, 0, 4, 524305, 0, 4, 589841, 0, 4, 655377, 0, 4, 720913, 0, 4, 786449, 0, 4, 851985, 0, 4, 917521, 0, 4, 983057, 0, 4, 1048593, 0, 4, 1114129, 0, 4, 1179665, 0, 4, 1245201, 0, 4, 1310737, 0, 4, 1376273, 0, 4, 1441809, 0, 4, 1507345, 0, 4, 1572881, 0, 4, 1638417, 0, 4, 1703953, 0, 4, 1769489, 0, 4, 1835025, 0, 4, 1900561, 0, 4, 1966097, 0, 4, 2031633, 0, 4, 2097169, 0, 4, 2162705, 0, 4, 2228241, 0, 4, 2293777, 0, 4, 2359313, 0, 4, 2424849, 0, 4, 2490385, 0, 4, 2555921, 0, 4, 2621457, 0, 4, 2686993, 0, 4, 2752529, 0, 4, 2818065, 0, 4, 2883601, 0, 4, 2949137, 0, 4, 3014673, 0, 4, 3080209, 0, 4, 3145745, 0, 4, 3211281, 0, 4, 3276817, 0, 4, 3342353, 0, 4, 3407889, 0, 4, 3473425, 0, 4, 3538961, 0, 4, 3604497, 0, 4, 3670033, 0, 4, 3735569, 0, 4, 3801105, 0, 4, 3866641, 0, 4, 3932177, 0, 4, 3997713, 0, 4, 4063249, 0, 4, 4128785, 0, 4, 4194321, 0, 4, 4259857, 0, 4, 4325393, 0, 4, 4390929, 0, 4, 4456465, 0, 4, 4522001, 0, 4, 18, 0, 4, 65554, 0, 4, 131090, 0, 4, 196626, 0, 4, 262162, 0, 4, 327698, 0, 4, 393234, 0, 4, 458770, 0, 4, 524306, 0, 4, 589842, 0, 4, 655378, 0, 4, 720914, 0, 4, 786450, 0, 4, 851986, 0, 4, 917522, 0, 4, 983058, 0, 4, 1048594, 0, 4, 1114130, 0, 4, 1179666, 0, 4, 1245202, 0, 4, 1310738, 0, 4, 1376274, 0, 4, 1441810, 0, 4, 1507346, 0, 4, 1572882, 0, 4, 1638418, 0, 4, 1703954, 0, 4, 1769490, 0, 4, 1835026, 0, 4, 1900562, 0, 4, 1966098, 0, 4, 2031634, 0, 4, 2097170, 0, 4, 2162706, 0, 4, 2228242, 0, 4, 2293778, 0, 4, 2359314, 0, 4, 2424850, 0, 4, 2490386, 0, 4, 2555922, 0, 4, 2621458, 0, 4, 2686994, 0, 4, 2752530, 0, 4, 2818066, 0, 4, 2883602, 0, 4, 2949138, 0, 4, 3014674, 0, 4, 3080210, 0, 4, 3145746, 0, 4, 3211282, 0, 4, 3276818, 0, 4, 3342354, 0, 4, 3407890, 0, 4, 3473426, 0, 4, 3538962, 0, 4, 3604498, 0, 4, 3670034, 0, 4, 3735570, 0, 4, 3801106, 0, 4, 3866642, 0, 4, 3932178, 0, 4, 3997714, 0, 4, 4063250, 0, 4, 4128786, 0, 4, 4194322, 0, 4, 4259858, 0, 4, 4325394, 0, 4, 4390930, 0, 4, 4456466, 0, 4, 4522002, 0, 4)
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_1ogaq"]
-texture = ExtResource("1_aiqlh")
+texture = ExtResource("4_f6de0")
 0:0/0 = 0
 0:0/0/terrain_set = 0
 0:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
@@ -258,7 +258,7 @@ tile_data = PackedInt32Array(65536, 0, 0, 1, 393216, 4, 65537, 65536, 0, 65538, 
 tile_data = PackedInt32Array(0, 393216, 4, 65536, 0, 0, 1, 327680, 5, 65537, 65536, 0, 65538, 65536, 0, 3, 393216, 5, 65539, 65536, 0, 65540, 131072, 0)
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_xtspd"]
-texture = ExtResource("1_aiqlh")
+texture = ExtResource("4_f6de0")
 0:0/0 = 0
 0:0/0/terrain_set = 0
 0:0/0/terrain = 0
@@ -471,7 +471,7 @@ pattern_2 = SubResource("TileMapPattern_2oulx")
 pattern_3 = SubResource("TileMapPattern_7qcus")
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ni1ef"]
-atlas = ExtResource("1_aiqlh")
+atlas = ExtResource("4_f6de0")
 region = Rect2(32, 80, 16, 16)
 
 [sub_resource type="Curve" id="Curve_n1ibj"]
@@ -498,11 +498,11 @@ height = 28.0
 [node name="Node2D" type="Node2D"]
 
 [node name="Manager" type="Node" parent="." node_paths=PackedStringArray("UI_ScoreParticle", "UI_Score", "clockArrow", "gameCamera", "xpBar") groups=["Game Manager"]]
-script = ExtResource("1_rgpv6")
+script = ExtResource("1_jxnen")
 UI_ScoreParticle = NodePath("UI/Control/HBoxContainer/Left/ScoreText/Control/Stars")
 UI_Score = NodePath("UI/Control/HBoxContainer/Left/ScoreText")
-clockArrow = NodePath("UI/Control/HBoxContainer2/Right/Control/TextureRect/TextureRect2")
-gameCamera = NodePath("../Camera2D")
+clockArrow = NodePath("UI/Control/HBoxContainer2/Right/Control/Clock/Arrow")
+gameCamera = NodePath("../PlayerCamera")
 xpBar = NodePath("UI/Control/HBoxContainer/Left/ProgressBar")
 
 [node name="UI" type="CanvasLayer" parent="Manager"]
@@ -537,16 +537,16 @@ layout_mode = 2
 size_flags_horizontal = 8
 size_flags_vertical = 2
 
-[node name="TextureRect" type="TextureRect" parent="Manager/UI/Control/HBoxContainer2/Right/Control"]
+[node name="Clock" type="TextureRect" parent="Manager/UI/Control/HBoxContainer2/Right/Control"]
 layout_mode = 1
 offset_right = 48.0
 offset_bottom = 48.0
 scale = Vector2(2, 2)
 pivot_offset = Vector2(48, 0)
 size_flags_vertical = 3
-texture = ExtResource("3_lqips")
+texture = ExtResource("2_oqgho")
 
-[node name="TextureRect2" type="TextureRect" parent="Manager/UI/Control/HBoxContainer2/Right/Control/TextureRect"]
+[node name="Arrow" type="TextureRect" parent="Manager/UI/Control/HBoxContainer2/Right/Control/Clock"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -562,7 +562,7 @@ grow_vertical = 2
 rotation = -1.5708
 pivot_offset = Vector2(24, 24)
 size_flags_vertical = 3
-texture = ExtResource("4_28lxi")
+texture = ExtResource("3_vrfab")
 
 [node name="HBoxContainer" type="HBoxContainer" parent="Manager/UI/Control"]
 layout_direction = 2
@@ -630,7 +630,7 @@ theme_override_styles/fill = SubResource("StyleBoxFlat_dyy3a")
 fill_mode = 3
 show_percentage = false
 
-[node name="Label" type="Label" parent="Manager/UI/Control/HBoxContainer/Left/ProgressBar"]
+[node name="MultiplyText" type="Label" parent="Manager/UI/Control/HBoxContainer/Left/ProgressBar"]
 layout_mode = 1
 anchors_preset = 7
 anchor_left = 0.5
@@ -646,7 +646,7 @@ grow_vertical = 0
 theme_override_colors/font_color = Color(1, 0, 0, 1)
 
 [node name="Level Generation" type="Node" parent="Manager" node_paths=PackedStringArray("platformTiles", "WallTiles", "coinsNode")]
-script = ExtResource("5_uae3k")
+script = ExtResource("5_aqa5n")
 platformTiles = NodePath("../../Map/Platforms")
 WallTiles = NodePath("../../Map/Walls")
 coinsNode = NodePath("../../Map/Coins")
@@ -670,7 +670,7 @@ layer_0/y_sort_enabled = true
 
 [node name="Coins" type="Node" parent="Map"]
 
-[node name="Camera2D" type="Camera2D" parent="." node_paths=PackedStringArray("follow")]
+[node name="PlayerCamera" type="Camera2D" parent="." node_paths=PackedStringArray("follow")]
 texture_filter = 1
 position = Vector2(73, 49)
 zoom = Vector2(3, 3)
@@ -679,14 +679,14 @@ limit_smoothed = true
 position_smoothing_enabled = true
 drag_horizontal_enabled = true
 drag_vertical_enabled = true
-script = ExtResource("2_g2bkm")
+script = ExtResource("6_reied")
 follow = NodePath("../JumperMan")
 
 [node name="JumperMan" type="CharacterBody2D" parent="." node_paths=PackedStringArray("node_feetCheck", "node_feetPaticles", "areaBody") groups=["Player"]]
 z_index = 1
 texture_filter = 1
 position = Vector2(82, 115)
-script = ExtResource("1_hk23r")
+script = ExtResource("7_0ly1x")
 node_feetCheck = NodePath("CollisionShape2D/Feet")
 node_feetPaticles = NodePath("Particles/FeetDust")
 areaBody = NodePath("Area2D")
@@ -695,7 +695,7 @@ metadata/_edit_group_ = true
 [node name="Controls" type="Node" parent="JumperMan"]
 
 [node name="Swipe" type="Node" parent="JumperMan/Controls" node_paths=PackedStringArray("impactSprite")]
-script = ExtResource("5_yaon4")
+script = ExtResource("8_d2oxu")
 impactSprite = NodePath("Swipe_UI/Center")
 
 [node name="Swipe_UI" type="CanvasLayer" parent="JumperMan/Controls/Swipe"]
@@ -704,10 +704,10 @@ visible = false
 [node name="Center" type="Sprite2D" parent="JumperMan/Controls/Swipe/Swipe_UI"]
 texture_filter = 1
 scale = Vector2(2.7016, 2.7016)
-texture = ExtResource("3_rnqiq")
+texture = ExtResource("9_e0ods")
 
 [node name="Arrow" type="Sprite2D" parent="JumperMan/Controls/Swipe/Swipe_UI/Center"]
-texture = ExtResource("4_jmdiv")
+texture = ExtResource("10_yuchp")
 
 [node name="Particles" type="Node2D" parent="JumperMan"]
 
@@ -748,7 +748,7 @@ color_ramp = SubResource("Gradient_5m4ou")
 
 [node name="Sprite2D" type="Sprite2D" parent="JumperMan"]
 scale = Vector2(0.109375, 0.15625)
-texture = ExtResource("1_rd78h")
+texture = ExtResource("11_vt6gr")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="JumperMan"]
 shape = SubResource("CapsuleShape2D_t3y5x")
