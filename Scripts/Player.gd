@@ -53,15 +53,8 @@ func checkFeet_exit(body:Node2D):
 		b_checkFeet = false
 
 func _process(delta):
-	if Input.is_action_just_pressed("UP"):
-		Jump()
-	elif Input.is_action_just_pressed("DOWN"):
-		Fall()
 	
-	#input.x = Input.get_axis("LEFT","RIGHT") 
-
-func _physics_process(delta):
-	# Add the gravity.
+		# Add the gravity.
 	if not is_on_floor():
 		velocity.y += gravity * delta
 	else:
@@ -77,4 +70,12 @@ func _physics_process(delta):
 	else:
 		velocity.x = lerp(velocity.x, 0.0, delta* 5)
 		node_feetPaticles.emitting = false
+
+	
+	
+	if Input.is_action_just_pressed("UP"):
+		Jump()
+	elif Input.is_action_just_pressed("DOWN"):
+		Fall()
+	
 	move_and_slide()

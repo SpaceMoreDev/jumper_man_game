@@ -136,4 +136,3 @@ func _physics_process(delta):
 	if player.position.y < threadData[1]:
 		generationThread.wait_to_finish()
 		generationThread.start(Generate)
-
