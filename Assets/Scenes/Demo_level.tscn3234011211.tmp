@@ -1,12 +1,11 @@
-[gd_scene load_steps=33 format=4 uid="uid://tnq1wjnhg1bs"]
+[gd_scene load_steps=32 format=4 uid="uid://tnq1wjnhg1bs"]
 
 [ext_resource type="Script" uid="uid://dvd0poysq872b" path="res://Scripts/GameManager.gd" id="1_jxnen"]
 [ext_resource type="Texture2D" uid="uid://1mdvq1ba3wlx" path="res://Assets/2D/clock.png" id="2_oqgho"]
 [ext_resource type="Texture2D" uid="uid://bwyssqdfkwkmg" path="res://Assets/2D/clockArrow.png" id="3_vrfab"]
 [ext_resource type="Texture2D" uid="uid://dc0ncbw3115xv" path="res://Assets/2D/tilemap.png" id="4_f6de0"]
-[ext_resource type="Script" uid="uid://k505outc250b" path="res://Scripts/Platform_Spawner.gd" id="5_cndkw"]
+[ext_resource type="PackedScene" uid="uid://bsnmmc0b5hd5r" path="res://Assets/Scenes/Platforms/Green/G_platform.tscn" id="5_cndkw"]
 [ext_resource type="Script" uid="uid://bjpl3a65nkac6" path="res://Scripts/GameCamera.gd" id="6_reied"]
-[ext_resource type="PackedScene" uid="uid://bsnmmc0b5hd5r" path="res://Assets/Scenes/Platforms/Green/G_platform.tscn" id="6_sx8dl"]
 [ext_resource type="Script" uid="uid://c7jo6520d04i1" path="res://Scripts/Player.gd" id="7_0ly1x"]
 [ext_resource type="Script" uid="uid://bov7y1655654n" path="res://Scripts/SwipeControls.gd" id="8_d2oxu"]
 [ext_resource type="Texture2D" uid="uid://c31c276m36heo" path="res://Assets/2D/center.png" id="9_e0ods"]
@@ -449,12 +448,12 @@ grow_horizontal = 2
 grow_vertical = 0
 theme_override_colors/font_color = Color(1, 0, 0, 1)
 
-[node name="Level Generation" type="Node" parent="Manager" node_paths=PackedStringArray("Map")]
-script = ExtResource("5_cndkw")
-PlatformScene = ExtResource("6_sx8dl")
-Map = NodePath("../../Map")
+[node name="Level Generation" type="Node" parent="Manager"]
 
-[node name="Map" type="Node2D" parent="."]
+[node name="Platform" parent="Manager" instance=ExtResource("5_cndkw")]
+position = Vector2(84, 90)
+
+[node name="Map" type="Node" parent="."]
 
 [node name="Walls" type="TileMapLayer" parent="Map"]
 y_sort_enabled = true

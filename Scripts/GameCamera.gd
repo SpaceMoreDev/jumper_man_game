@@ -18,7 +18,7 @@ func _ready():
 	manager = Global.GameManager
 	viewSize = get_viewport_rect().size
 
-func _physics_process(delta):
+func _process(delta):
 	var distance : float = follow.position.y - position.y
 	if distance > 170:
 		get_tree().reload_current_scene()
@@ -32,4 +32,3 @@ func _physics_process(delta):
 			if not manager.started:
 				manager.started = true
 			position.y = lerp(position.y, position.y - cameraSpeed, delta * 5)
-
